@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="simple-virtual-dom/dist/bundle.js"></script>
+<body>
+收到if静安寺第欧派
+
+</body>
+<script type="text/javascript">
+    var el = svd.el
+    var diff = svd.diff
+    var patch = svd.patch
+//    console.error("打印el")
+//    console.log(el);
+//    console.error("打印svd")
+//    console.log(svd)
+
+  //第一次虚拟dom结构
+    var root = el('ul', [
+        el('li', {key: 'uid1'}, ['Jerry',"ii"]),
+        el('li', {key: 'uid2'}, ['Tomy']),
+        el('li', {key: 'uid3'}, ['Lucy']),
+    ])
+//    console.error("打印root")
+   var curDom=root.render();
+    document.querySelector("body").appendChild(curDom);
+
+//    更新了虚拟dom结构
+//    var newTree = el('div', {'id': 'container'}, [
+//        el('h1', {style: 'color: red'}, ['simple virtal dom']),
+//        el('p', ['Hello, virtual-dom']),
+//        el('ul', [el('li'), el('li')])
+//    ])
+    var newTree = el('ul', [
+        el('li', {key: 'uid1'}, ['Jerry',"ii"]),
+        el('li', {key: 'uid4'}, ['Tomy']),
+        el('li', {key: 'uid3',id:"thisid"}, ['Lucy1111']),
+    ])
+
+    var diffpatch=diff(root,newTree)//对新旧虚拟Dom进行对比
+    console.error(diffpatch);
+    var curDom2=newTree.render();
+    console.log(curDom2)
+
+
+
+
+
+
+
+</script>
+</html>
