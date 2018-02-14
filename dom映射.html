@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            float: left;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="table_box">
+
+
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="cartData2.js"></script>
+
+
+<script type="text/javascript">
+    console.time("s")
+    var obj = {}, obj2 = {}, frag = document.createDocumentFragment()
+
+    for (var i = 0; i < winData.length; i++) {
+        var cur = winData[i], childObj = [];
+        obj2[cur.sku] = {"sku":cur.sku,"num":cur.buy_num};
+        var oUl = document.createElement("ul"),
+            oLi1 = document.createElement('li'),
+            oLi2 = document.createElement('li'),
+            oLi3 = document.createElement('li'),
+            oLi4 = document.createElement('li');
+        oSpan = document.createElement('span');
+        oUl.wid = "w-" + i;
+        oLi1.innerText = cur.imgUrl;
+        oLi1.appendChild(oSpan)
+        oLi1.wid = "w-" + i + "-" + 1;
+        oLi2.innerText = cur.name;
+        oLi2.wid = "w-" + i + "-" + 2;
+        oLi3.innerText = cur.buy_num;
+        oLi3.wid = "w-" + i + "-" + 3;
+        oLi4.innerText = "w-" + i;
+        oLi4.wid = "w-" + i + "-" + 4;
+        oUl.appendChild(oLi1);
+        oUl.appendChild(oLi2);
+        oUl.appendChild(oLi3);
+        oUl.appendChild(oLi4);
+        childObj.push(oLi1);
+        childObj.push(oLi2);
+        childObj.push(oLi3);
+        creaObj(oUl, childObj);
+        frag.appendChild(oUl);
+
+    }
+    document.getElementById("table_box").appendChild(frag);
+    function creaObj(oUl, list) {
+        var carPid = oUl.wid;
+        obj[carPid] = oUl;
+        for (var i = 0; i < list.length; i++) {
+            var cur = list[i],
+                curCid = cur.wid;
+            obj[curCid] = cur;
+        }
+    }
+    console.timeEnd("s");
+    console.log(obj)
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>处理关于Json对象深层合并</title>
+</head>
+<body>
+<div id="console_result"></div>
+</body>
+</html>
+
+<script type="text/javascript">
+   var  option = {
+        "baseOption": {
+            "title": {
+                "show": false
+            },
+            "tooltip": {
+                "trigger": "axis",
+                "axisPointer": {
+                    "type": "shadow"
+                }
+            },
+            "toolbox": {
+                "show": true,
+                "top":"0.8%",
+                "right":"1%",
+                "feature": {
+                    "dataView": {"show": true, "readOnly": false},
+                    "restore": {"show": true},
+                    "saveAsImage": {"show": true},
+                    "magicType": {
+                        "show": true,
+                        "type": ['line', 'bar']
+                    }
+                }
+            },
+            "legend": {
+                "show": false,
+                "data": []
+            },
+            "grid": {
+                "show": true,
+                "top": "10%",
+                "left": "1%",
+                "right": "2%",
+                "bottom": "4%",
+                "containLabel": true
+            },
+            "xAxis": {
+                "show": true,
+                "type": "category",
+                "boundaryGap": [0, 0.01],
+                "data" : ['Mon', 'Tue', 'Wed','Sun']
+            },
+            "yAxis": {
+                "type": "value"
+            },
+            "series": [
+                {
+                    "name": '2012年',
+                    "type": 'bar',
+                    "data": [19325, 23438, 31000, 121594,8989]
+                }
+            ]
+        },
+        "media": []
+    };
+   var newOption = {//echart的option更新信息
+       baseOption:{
+           xAxis: {data: [12,324,55,4,12], type: "category"},
+           series:  [ {
+               "name": '2034534年',
+               "type": 'line',
+               "data": [325, 238, 310, 124,89]
+           }],
+           toolbox:{
+               "top":"0.8%",
+               "right":"1%",
+               feature: {
+               "restore": {"show": false,"aaa":123},
+                   "magicType": {
+                       show:false
+                   }
+               }
+           }
+       }
+
+   };
+
+
+</script>
+<script type="text/javascript">
+    var temp=0;
+    function objMerge(srcObject,targetObject) {
+        var reg=/[a-z]+/gi;
+        for(var key in srcObject){
+            if(srcObject.hasOwnProperty(key)){
+                var dataType=Object.prototype.toString.call(srcObject[key]);
+                dataType=dataType.match(reg);
+                if(dataType[1]=="Object"){
+                    objMerge(srcObject[key],targetObject[key])
+                }else{
+                    targetObject[key]=srcObject[key]
+                }
+            }
+        }
+    }
+    objMerge(newOption,option);
+    console.log(option)
+
+</script>
+
+
+
+
+
+
+
+

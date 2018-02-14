@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="file" id="filemy" name="myfile">
+
+</body>
+<script type="text/javascript">
+    window.onload=function () {
+        var oIput=document.getElementById("filemy");
+        oIput.onchange=function (e) {
+          var re=new FileReader();
+          var tar=e.target.files[0];
+          console.log(tar);
+          console.log(re.size)
+
+        }
+    }
+
+
+
+</script>
+</html>
