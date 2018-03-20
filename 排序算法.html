@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+    //选择排序
+    var ary = [1, 2, 3, 4, 1, 2, 3, 2, 13, 2, 13, 2, 34545346, 5465756, 7, 2, 13, 2];
+    var selectSort = (arg, arg2) =>{
+        let len = arg.length;
+        var minIndex, temp;
+        for (let i = 0; i < len - 1; i++) { //循环所有项
+            minIndex = i; //保存当前项，并拟定当前项是最小的
+            for (let j = i + 1; j < len; j++) { //从当前项的下一项开始循环到结尾
+                if (arg[j] < arg[minIndex]) { //数组中的每一项和拟定最小项进行对比
+                    minIndex = j;//如果循环的当前项小于拟定的最小项，就让它的等于最小项，让它成为最小项，从而找出了最小的数
+                }
+            }
+            temp=arg[i]; //使用临时变量保存当前项
+            arg[i]=arg[minIndex]; //把最小项等于当前项
+            arg[minIndex]=temp; //临时变量等最小项
+
+            //吧dangqi当前项和找到的最小项进行对调
+
+            return arg//返回处理后的数组
+    }
+    console.log(selectSort(ary));
+
+</script>
+</html>
