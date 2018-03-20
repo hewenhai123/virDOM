@@ -9,7 +9,7 @@
 </body>
 
 <script type="text/javascript">
-    //选择排序
+    //快速排序
     var ary = [1, 2, 3, 4, 1, 2, 3, 2, 13, 2, 13, 2, 34545346, 5465756, 7, 2, 13, 2];
     var selectSort = (arg, arg2) =>{
         let len = arg.length;
@@ -21,12 +21,12 @@
                     minIndex = j;//如果循环的当前项小于拟定的最小项，就让它的等于最小项，让它成为最小项，从而找出了最小的数
                 }
             }
-            temp=arg[i]; //使用临时变量保存当前项
-            arg[i]=arg[minIndex]; //把最小项等于当前项
-            arg[minIndex]=temp; //临时变量等最小项
+            temp = arg[i]; //使用临时变量保存当前项
+            arg[i] = arg[minIndex]; //把最小项等于当前项
+            arg[minIndex] = temp; //临时变量等最小项
 
             //吧dangqi当前项和找到的最小项进行对调
-
+        }
             return arg//返回处理后的数组
     }
     console.log(selectSort(ary));
